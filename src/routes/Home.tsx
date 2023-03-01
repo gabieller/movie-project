@@ -20,7 +20,7 @@ export default function Home() {
 
   };
 
-  console.log(movies)
+
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -31,13 +31,9 @@ export default function Home() {
       });
     };
 
-    // const queryMovie = async () => {
-    //   const data = await searchMovie(searchTerms)
-    //   console.log(data)
-    // }
+
 
     fetchMovie();
-    // queryMovie()
   }, []);
 
   return (
@@ -51,11 +47,11 @@ export default function Home() {
       <button type="submit" onClick={handleSubmit}>
         Buscar
       </button>
-      {/* <div>
+      <div>
         O filme é {movie.title} e a nota é {movie.vote_average}
-      </div> */}
+      </div>
       <h2>Filmes buscados:</h2>
-      {movies?.map((e) => <div>{e.title}</div>)}  
+      {movies?.map((e) => <div>{e.title} - {e.release_date}</div>)}  
     </>
   );
 }
