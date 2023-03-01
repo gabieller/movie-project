@@ -16,11 +16,24 @@ type getMovieType = {
 export const getMovie = async (id: string) => {
   try {
     const response = await axios.get(
-    `${import.meta.env.VITE_API_URL}/${id}?api_key=${import.meta.env.VITE_API_KEY}`
-
+      `${import.meta.env.VITE_API_URL}/${id}?api_key=${
+        import.meta.env.VITE_API_KEY
+      }`
     );
     const { data } = response;
-    return data
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const searchMovie = async (query: string) => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_SEARCH_URL}=${query}`
+    );
+    const { data } = response;
+    return data.results;
   } catch (error) {
     console.log(error);
   }
