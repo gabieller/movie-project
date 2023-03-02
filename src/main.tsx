@@ -6,6 +6,7 @@ import App from "./App";
 
 import "./index.css";
 import Home from "./routes/Home";
+import Details from "./routes/Details";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/details/:id",
+        element: <Details />,
       },
     ],
   },

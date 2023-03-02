@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
+
 import "./App.css";
 
 function App() {
   return (
-    <div>
-      <h1>Movie Search App</h1>
+    <div className="app-container">
+      Movies Search
       <Outlet />
     </div>
   );

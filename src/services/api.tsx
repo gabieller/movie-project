@@ -38,3 +38,17 @@ export const searchMovie = async (query: string) => {
     console.log(error);
   }
 };
+
+export const fetchPopularMovies = async () => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_POPULAR_MOVIES}`
+    );
+
+    const { data } = response;
+    return data.results;
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
