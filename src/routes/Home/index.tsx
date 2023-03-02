@@ -1,7 +1,8 @@
 import { SetStateAction, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { MovieCard } from "../../components/MovieCard";
 import { fetchPopularMovies, searchMovie } from "../../services/api";
+
+import * as S from './style'
 
 type MovieType = {
   id?: string;
@@ -30,13 +31,12 @@ export default function Home() {
 
   //TODO destruct to get only the props I want
   useEffect(() => {
-    const fetchMovie = async () => {
+    const fetchMovies = async () => {
       const data = await fetchPopularMovies();
       setPopularMovies(data);
     };
 
-    fetchMovie();
-    // fetchPopularMovies();
+    fetchMovies();
   }, []);
 
   return (
@@ -49,8 +49,9 @@ export default function Home() {
           onChange={handleInput}
         />
       </form>
-      <h2>Filmes populares</h2>
-      <div>
+      <S.Container>
+      <S.Title>Filmes populares</S.Title>
+      <S.Grid>
         {popularMovies?.map(
           ({ id, poster_path, title, vote_average }: MovieType) => {
             return (
@@ -64,12 +65,14 @@ export default function Home() {
             );
           }
         )}
-      </div>
+      </S.Grid>
 
-      <h2>Filmes buscados:</h2>
+      <S.Title>Filmes buscados:</S.Title>
       {movies?.map(({ title }: MovieType) => (
         <div>{title}</div>
       ))}
+      </S.Container>
+
     </>
   );
 }

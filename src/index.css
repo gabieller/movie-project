@@ -1,12 +1,12 @@
 * {
-    font-family: Helvetica;
+    font-family: Inter;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
   body {
-    background-color: #000;
+    background-color: #0D1B2A;
     color: #fff
   }
   
