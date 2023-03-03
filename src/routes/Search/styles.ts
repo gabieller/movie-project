@@ -7,15 +7,9 @@ export const Container = styled.div`
   gap: 2rem;
 `;
 
-export const Title = styled.div`
-  font-size: 2rem;
-  color: #e0e1dd;
-`;
-
 export const Grid = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   gap: 1rem;
-`;
+`

@@ -7,6 +7,7 @@ import App from "./App";
 import "./index.css";
 import Home from "./routes/Home";
 import Details from "./routes/Details";
+import Search from "./routes/Search";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: <Details />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
     ],
   },
