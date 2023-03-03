@@ -11,6 +11,7 @@ type MovieDetails = {
 };
 
 export default function Details() {
+        // @ts-ignore
   const [movieDetails, setMovieDetails] = useState<MovieDetails>({});
 
   const { id } = useParams();
@@ -28,6 +29,7 @@ export default function Details() {
         overview,
         image: `${import.meta.env.VITE_API_IMAGE_PATH}${poster_path}`,
       };
+      // @ts-ignore
       setMovieDetails(movie);
     };
     fetchMovie();
