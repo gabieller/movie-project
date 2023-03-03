@@ -34,6 +34,7 @@ export default function Home() {
             return (
               <MovieCard
                 id={id}
+                // @ts-ignore
                 poster={poster_path}
                 title={title}
                 vote_average={vote_average}
