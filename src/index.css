@@ -1,13 +1,15 @@
 * {
-    font-family: Inter;
+    font-family: Montserrat;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
   body {
-    background-color: #3C7A89;
-    color: #fff
+    display: flex;
+    flex-direction: column;
+    background-color: #F2E9E4;
+    color: #22223B;
   }
   
 

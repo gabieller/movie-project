@@ -12,4 +12,8 @@ export const Grid = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-`
+`;
+
+export const Text = styled.span`
+  text-transform: capitalize;
+`;

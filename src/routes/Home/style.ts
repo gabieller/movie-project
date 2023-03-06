@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Title = styled.div`
   font-size: 2rem;
-  color: #e0e1dd;
+  color: #22223B
 `;
 
 export const Grid = styled.div`

@@ -1,23 +1,22 @@
 import { Link } from "react-router-dom";
+import { Movie } from "../../types/Movie";
+
+import { AiFillStar } from "react-icons/ai";
+
 import * as S from "./styles";
 
-type MovieType = {
-  id?: string;
-  poster: string;
-  title: string;
-  vote_average: number;
-};
-
-export const MovieCard = ({ id, poster, title, vote_average }: MovieType) => {
+export const MovieCard = ({ id, poster_path, title, vote_average }: Movie) => {
   return (
-    <S.Card>
-        <Link to={`/details/${id}`}>
-          <S.Image src={`${import.meta.env.VITE_API_IMAGE_PATH}${poster}`} />
-        </Link>
-      <S.InfoDetails>
-        <S.Title>{title}</S.Title>
-        <S.Text>{vote_average}</S.Text>
-      </S.InfoDetails>
-    </S.Card>
+    <Link to={`/details/${id}`} style={{ textDecoration: 'none' }}>
+      <S.Card>
+        <S.Image src={`${import.meta.env.VITE_API_IMAGE_PATH}${poster_path}`} />
+        <S.InfoDetails>
+          <S.Title>{title}</S.Title>
+          <S.VotesWrapper>
+            <AiFillStar color="#4A4E69" /> <span>{vote_average}</span>
+          </S.VotesWrapper>
+        </S.InfoDetails>
+      </S.Card>
+    </Link>
   );
 };

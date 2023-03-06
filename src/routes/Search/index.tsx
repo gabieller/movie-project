@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+
 import { searchMovie } from "../../services/api";
+
 import * as S from "./styles";
 
 export default function Search() {
@@ -20,7 +22,17 @@ export default function Search() {
 
   return (
     <S.Container>
-      <S.Grid>{movies.map((movie: any) => <p>{movie.title} - {movie.vote_average}</p>)}</S.Grid>
+      <h2>
+        Resultados para: <S.Text>{query}</S.Text>
+      </h2>
+
+      <S.Grid>
+        {movies.map((movie: any) => (
+          <p>
+            {movie.title} - {movie.vote_average}
+          </p>
+        ))}
+      </S.Grid>
     </S.Container>
   );
 }
