@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../../components/MovieCard";
-import { fetchPopularMovies } from "../../services/api";
+import { fetchPopularMovies, searchMovieExpress } from "../../services/api";
 import { Movie } from "../../types/Movie";
 
 import * as S from "./style";
 
 export default function Home() {
   const [popularMovies, setPopularMovies] = useState<Movie[]>();
+
 
   //TODO destruct to get only the props I want
   useEffect(() => {
@@ -25,6 +26,9 @@ export default function Home() {
 
     fetchMovies();
   }, [popularMovies]);
+
+  searchMovieExpress('550')
+
 
   return (
     <S.Container>

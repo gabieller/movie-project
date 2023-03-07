@@ -39,6 +39,18 @@ export const searchMovie = async (query: string) => {
   }
 };
 
+export const searchMovieExpress = async (query: string) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/api/movie/${query}`
+    );
+    const { data } = response;
+    return data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const fetchPopularMovies = async () => {
   try {
     const response = await axios.get(
@@ -47,7 +59,6 @@ export const fetchPopularMovies = async () => {
 
     const { data } = response;
     return data.results;
-    
   } catch (error) {
     console.log(error);
   }
