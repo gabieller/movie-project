@@ -1,5 +1,7 @@
-export const Button = (children: string) => {
+import React from "react"
+
+export const Button = () => {
     return (
-        <button onClick={onClick}>{children}</button>
+        <button onClick={onClick}>OI</button>
     )
 }
