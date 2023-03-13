@@ -7,19 +7,29 @@ type Movie = {
   vote_average: string;
 };
 
-type getMovieType = {
-  data: Movie[];
+
+
+//DONE WITH EXPRESS
+export const fetchPopularMovies = async () => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_BACKEND_URL_POPULAR_MOVIES}`
+    );
+
+    const { data } = response;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-//TODO check if is a good idea add params to this call
-//TODO add ts
+//DONE WITH EXPRESS
 export const getMovie = async (id: string) => {
   try {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/${id}?api_key=${
-        import.meta.env.VITE_API_KEY
-      }`
+      `${import.meta.env.VITE_BACKEND_URL}/${id}`
     );
+
     const { data } = response;
     return data;
   } catch (error) {
@@ -32,31 +42,6 @@ export const searchMovie = async (query: string) => {
     const response = await axios.get(
       `${import.meta.env.VITE_API_SEARCH_URL}=${query}`
     );
-    const { data } = response;
-    return data.results;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const searchMovieExpress = async (query: string) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:3000/api/movie/${query}`
-    );
-    const { data } = response;
-    return data.results;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const fetchPopularMovies = async () => {
-  try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_API_POPULAR_MOVIES}`
-    );
-
     const { data } = response;
     return data.results;
   } catch (error) {

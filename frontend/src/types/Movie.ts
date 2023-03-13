@@ -6,5 +6,5 @@ export type Movie = {
     overview?: string;
     poster_path?: string;
     runtime?: number
-    genres: string[]
+    genres?: string[]
 }
