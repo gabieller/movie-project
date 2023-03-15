@@ -3,13 +3,14 @@ import { Movie } from "../../types/Movie";
 
 import { AiFillStar } from "react-icons/ai";
 
+
 import * as S from "./styles";
 
 export const MovieCard = ({ id, poster_path, title, vote_average }: Movie) => {
   return (
     <Link to={`/details/${id}`} style={{ textDecoration: 'none' }}>
       <S.Card>
-        <S.Image src={`${import.meta.env.VITE_API_IMAGE_PATH}${poster_path}`} />
+        <S.Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
         <S.InfoDetails>
           <S.Title>{title}</S.Title>
           <S.VotesWrapper>

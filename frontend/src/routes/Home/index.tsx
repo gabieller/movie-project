@@ -10,7 +10,6 @@ import * as S from "./style";
 export default function Home() {
   const [popularMovies, setPopularMovies] = useState<Movie[]>();
 
-  //TODO destruct to get only the props I want
   useEffect(() => {
     const fetchMovies = async () => {
       const data = await fetchPopularMovies();
@@ -26,7 +25,7 @@ export default function Home() {
     };
 
     fetchMovies();
-  }, [popularMovies]);
+  }, []);
 
   return (
     <S.Container>

@@ -13,12 +13,14 @@ export default function Search() {
 
   useEffect(() => {
     const fetchMovies = async () => {
+      console.log('TESTE')
       // @ts-ignore
-      const data = await searchMovie(query);
-      setMovies(data);
+      const movies = await searchMovie(query);
+      setMovies(movies);
     };
+    console.log('TESTE2')
     fetchMovies();
-  }, [movies]);
+  }, []);
 
   return (
     <S.Container>
@@ -27,7 +29,7 @@ export default function Search() {
       </h2>
 
       <S.Grid>
-        {movies.map((movie: any) => (
+        {movies?.map((movie: any) => (
           <p>
             {movie.title} - {movie.vote_average}
           </p>
