@@ -32,8 +32,19 @@ async function searchMovie(query) {
   return res.data.results;
 }
 
+async function getTopRatedMovies(page) {
+  const res = await instance.get('movie/top_rated', {
+    params: {
+      language: 'en-US',
+      page
+    }
+  })
+  return res.data.results
+}
+
 module.exports = {
   getMovieById,
   getPopularMovies,
   searchMovie,
+  getTopRatedMovies
 };

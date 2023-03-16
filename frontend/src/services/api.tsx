@@ -16,6 +16,15 @@ export const fetchPopularMovies = async () => {
   }
 };
 
+export const fetchTopRatedMovies = async () => {
+  try {
+    const response = await axios.get("api/top-rated");
+    return response?.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getMovie = async (id: string) => {
   try {
     const response = await axios.get(`/api/movies/${id}`);

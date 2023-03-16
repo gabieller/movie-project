@@ -1,41 +1,66 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { MovieCard } from "../../components/MovieCard";
-import { fetchPopularMovies } from "../../services/api";
+import { fetchPopularMovies, fetchTopRatedMovies } from "../../services/api";
 import { Movie } from "../../types/Movie";
 
 import * as S from "./style";
 
 export default function Home() {
-  const [popularMovies, setPopularMovies] = useState<Movie[]>();
+  const [showedMovies, setShowedMovies] = useState<Movie[]>();
+  const [isSelected, setIsSelected] = useState<boolean>();
+
+  const getPopularMovies = async () => {
+    const data = await fetchPopularMovies();
+
+    const sortedPopular = data?.sort((a, b) =>
+      a.vote_average < b.vote_average
+        ? 1
+        : a.vote_average > b.vote_average
+        ? -1
+        : 0
+    );
+    setShowedMovies(sortedPopular);
+    setIsSelected(true);
+  };
+
+  const getTopRatedMovies = async () => {
+    const data = await fetchTopRatedMovies();
+
+    const sortedTopRated = data?.sort((a, b) => {
+      a.vote_average < b.vote_average
+        ? 1
+        : a.vote_average > b.vote_average
+        ? -1
+        : 0;
+    });
+
+    setShowedMovies(sortedTopRated);
+    setIsSelected(true);
+  };
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      const data = await fetchPopularMovies();
-
-      const sortedPopular = data?.sort((a, b) =>
-        a.vote_average < b.vote_average
-          ? 1
-          : a.vote_average > b.vote_average
-          ? -1
-          : 0
-      );
-      setPopularMovies(sortedPopular);
-    };
-
-    fetchMovies();
+    getPopularMovies();
   }, []);
 
   return (
     <S.Container>
-      <S.Title>Filmes populares</S.Title>
+      <S.MenuWrapper>
+        <S.Menu onClick={getPopularMovies} isSelected={isSelected}>
+          Trending Movies
+        </S.Menu>
+        <S.Line />
+        <S.Menu onClick={getTopRatedMovies} isSelected={isSelected}>
+          Top Rated
+        </S.Menu>
+      </S.MenuWrapper>
 
       <S.Grid>
-        {popularMovies?.map(
+        {showedMovies?.map(
           ({ id, poster_path, title, vote_average }: Movie) => {
             return (
               <MovieCard
+                key={id}
                 id={id}
                 poster_path={poster_path}
                 title={title}

@@ -16,11 +16,11 @@ router.get("/movies/:id", async (req, res) => {
 
 router.get("/popular-movies", async (req, res) => {
   try {
-    const page = req.params.page
+    const page = req.params.page;
     const popularMovies = await tmdbClient.getPopularMovies(page | 1);
     res.json(popularMovies);
   } catch (error) {
-    console.log(error);
+    console.log("Failed to load popular movies");
     res.sendStatus(500);
   }
 });
@@ -33,6 +33,17 @@ router.get("/search", async (req, res) => {
   } catch (error) {
     console.log("Failed to load movie");
     return res.sendStatus(500);
+  }
+});
+
+router.get("/top-rated", async (req, res) => {
+  try {
+    const page = req.params.page;
+    const topRatedMovies = await tmdbClient.getTopRatedMovies(page | 1);
+    res.json(topRatedMovies);
+  } catch (error) {
+    console.log("Failed to load top rated movies");
+    res.sendStatus(500);
   }
 });
 
