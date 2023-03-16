@@ -1,14 +1,15 @@
+import React from "react";
+
 import { Link } from "react-router-dom";
 import { Movie } from "../../types/Movie";
 
 import { AiFillStar } from "react-icons/ai";
 
-
 import * as S from "./styles";
 
 export const MovieCard = ({ id, poster_path, title, vote_average }: Movie) => {
   return (
-    <Link to={`/details/${id}`} style={{ textDecoration: 'none' }}>
+    <Link to={`/details/${id}`} style={{ textDecoration: "none" }}>
       <S.Card>
         <S.Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`} />
         <S.InfoDetails>

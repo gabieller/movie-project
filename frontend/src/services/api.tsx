@@ -10,8 +10,7 @@ type Movie = {
 export const fetchPopularMovies = async () => {
   try {
     const response = await axios.get("/api/popular-movies");
-    const { data } = response;
-    return data;
+    return response?.data;
   } catch (error) {
     console.log(error);
   }
