@@ -7,31 +7,19 @@ type Movie = {
   vote_average: string;
 };
 
-
-
-//DONE WITH EXPRESS
 export const fetchPopularMovies = async () => {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL_POPULAR_MOVIES}`
-    );
-
-    const { data } = response;
-    return data;
+    const response = await axios.get("/api/popular-movies");
+    return response?.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-//DONE WITH EXPRESS
 export const getMovie = async (id: string) => {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/${id}`
-    );
-
-    const { data } = response;
-    return data;
+    const response = await axios.get(`/api/movies/${id}`);
+    return response?.data;
   } catch (error) {
     console.log(error);
   }
@@ -39,11 +27,12 @@ export const getMovie = async (id: string) => {
 
 export const searchMovie = async (query: string) => {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_API_SEARCH_URL}=${query}`
-    );
-    const { data } = response;
-    return data.results;
+    const response = await axios.get(`/api/search`, {
+      params: {
+        query: query,
+      },
+    });
+    return response?.data;
   } catch (error) {
     console.log(error);
   }
