@@ -6,18 +6,12 @@ import { Movie } from "../../types/Movie";
 
 import * as S from "./styles";
 
-type TabContent = {
-  id: number;
-  title: string;
-};
-
 export function MoviesList({ fetchMovies }) {
   const [showedMovies, setShowedMovies] = useState<Movie[]>();
 
-
   const getMovies = async () => {
     const data = await fetchMovies();
-    const sortedPopular = data?.sort((a, b) =>
+    const sortedPopular = data?.results?.sort((a, b) =>
       a.vote_average < b.vote_average
         ? 1
         : a.vote_average > b.vote_average

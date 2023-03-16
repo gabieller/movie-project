@@ -1,1 +1,3 @@
-import { Movie } from "./Movie";
+import { Movie, MoviesResponse } from "./Movie";
+
+export {Movie, MoviesResponse}

@@ -1,48 +1,47 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import {Movie, MoviesResponse} from '../types'
 
-type Movie = {
-  original_title: string;
-  genres: [];
-  release_date: string;
-  vote_average: string;
-};
-
-export const fetchPopularMovies = async () => {
+export const fetchPopularMovies = async (): Promise<MoviesResponse> => {
   try {
-    const response = await axios.get("/api/popular-movies");
+    const response: AxiosResponse<MoviesResponse> = await axios.get("/api/popular-movies");
     return response?.data;
   } catch (error) {
     console.log(error);
+    throw error
   }
 };
 
-export const fetchTopRatedMovies = async () => {
+export const fetchTopRatedMovies = async (): Promise<MoviesResponse> => {
   try {
-    const response = await axios.get("/api/top-rated");
+    const response: AxiosResponse<MoviesResponse> = await axios.get("/api/top-rated");
     return response?.data;
   } catch (error) {
     console.log(error);
+    throw error
   }
 };
 
-export const getMovie = async (id: string) => {
+export const getMovie = async (id: string): Promise<Movie> => {
   try {
-    const response = await axios.get(`/api/movies/${id}`);
+    const response: AxiosResponse<Movie> = await axios.get(`/api/movies/${id}`);
     return response?.data;
   } catch (error) {
     console.log(error);
+    throw error
   }
 };
 
-export const searchMovie = async (query: string) => {
+export const searchMovie = async (query: string, page: number): Promise<MoviesResponse> => {
   try {
-    const response = await axios.get(`/api/search`, {
+    const response: AxiosResponse<MoviesResponse> = await axios.get(`/api/search`, {
       params: {
         query: query,
+        page: page
       },
     });
     return response?.data;
   } catch (error) {
     console.log(error);
+    throw error
   }
 };

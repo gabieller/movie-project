@@ -27,8 +27,8 @@ router.get("/popular-movies", async (req, res) => {
 
 router.get("/search", async (req, res) => {
   try {
-    const query = req.query.query;
-    const searchResult = await tmdbClient.searchMovie(query);
+    const {query, page} = req.query;
+    const searchResult = await tmdbClient.searchMovie(query, page);
     return res.json(searchResult);
   } catch (error) {
     console.log("Failed to load movie");

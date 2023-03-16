@@ -20,16 +20,17 @@ async function getPopularMovies(page) {
       page,
     },
   });
-  return res.data.results;
+  return res.data;
 }
 
-async function searchMovie(query) {
+async function searchMovie(query, page) {
   const res = await instance.get('/search/movie', {
     params: {
-      query: query,
+      query,
+      page,
     },
   });
-  return res.data.results;
+  return res.data;
 }
 
 async function getTopRatedMovies(page) {
@@ -39,7 +40,7 @@ async function getTopRatedMovies(page) {
       page
     }
   })
-  return res.data.results
+  return res.data
 }
 
 module.exports = {
