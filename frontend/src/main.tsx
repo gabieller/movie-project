@@ -8,6 +8,7 @@ import "./index.css";
 import Home from "./routes/Home";
 import Details from "./routes/Details";
 import Search from "./routes/Search";
+import TopRated from "./routes/TopRated";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/top-rated",
+        element: <TopRated />,
       },
       {
         path: "/details/:id",

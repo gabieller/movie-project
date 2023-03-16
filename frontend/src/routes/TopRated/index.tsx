@@ -1,15 +1,15 @@
 import React from "react";
 
-import { fetchPopularMovies } from "../../services/api";
 import { MoviesList } from "../../components/MoviesList";
+import { fetchTopRatedMovies } from "../../services/api";
 
 
 import * as S from "./style";
 
-export default function Home() {
+export default function TopRated() {
   return (
     <S.Container>
-      <MoviesList fetchMovies={fetchPopularMovies}/>
+      <MoviesList fetchMovies={fetchTopRatedMovies}/>
     </S.Container>
   );
 }

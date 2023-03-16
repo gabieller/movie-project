@@ -24,6 +24,12 @@ export const NavBar = () => {
       <Link to="/" style={{ textDecoration: 'none' }}>
         <S.Title>Movies Project</S.Title>
       </Link>
+
+      <Link to="/top-rated" style={{ textDecoration: 'none' }}>
+        <S.Title>Movies Project</S.Title>
+      </Link>
+
+
       <S.SearchWrapper>
         <form onSubmit={handleSubmit}>
           <S.SeachInput
@@ -33,7 +39,6 @@ export const NavBar = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </form>
-
         <SearchButton onClick={handleSubmit} />
       </S.SearchWrapper>
     </S.NavBar>
